@@ -157,7 +157,7 @@ link = {
     var sender = web3.eth.accounts.privateKeyToAccount('0x37c79248c87d1da9018998a9b84526174e8e3562353501345e4ffe71716fd082');
     var recipent = document.getElementById("recipentAddress").value;
     var recipentAmount = document.getElementById("recipentAmount").value;
-
+    //refer https://github.com/ethereum/wiki/wiki/JavaScript-API#example-45 for complete format of raw transaction
     const rawTransaction = {
       "to": recipent,
       "value": web3.utils.toHex(web3.utils.toWei(recipentAmount, "ether")),
@@ -172,7 +172,8 @@ link = {
     .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction))
     .then(receipt => console.log("Transaction receipt: ", receipt))
     .catch(err => console.error(err));
-  }
+  },
+
 };
 
 $(function() {
