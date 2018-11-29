@@ -1,2 +1,2 @@
 # eth-wallet
-Eth light wallet
+Simple demo to demonstrate working of ETH wallet
