@@ -1,23 +1,32 @@
-//Refer for web3.eth functions - https://web3js.readthedocs.io/en/1.0/web3-eth-accounts.html
-
 link = {
   web3Provider: null,
+
+
   init: function() {
+
    link.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
-   link.web3Provider = new Web3.providers.HttpProvider('https://rinkeby.infura.io/yGEHQFbey55ozzDha3hf');
+  link.web3Provider = new Web3.providers.HttpProvider('https://rinkeby.infura.io/yGEHQFbey55ozzDha3hf');
   //link.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/dXG7QYJRJPW16SDWx2EM');
 
     web3 = new Web3(link.web3Provider);
     return link.bindEvents();
 },
 
+
+
 bindEvents: function() {
   $(document).on('click', '#newWallet', link.createwallet);
   $(document).on('click', '#impkey', link.importkeystore);
   $(document).on('click', '#imppriv', link.importprivatekey);
+  $(document).on('click', '#balance', link.checkBalance);
 },
+
+
+
 Download: function(storageObj, address)
 {
+
+
   var x = new Date()
   var UTCseconds = (x.getTime() + x.getTimezoneOffset()*60*1000)/1000;
   var name = 'Keystore - ' + address + ' - ' + (new Date()).toUTCString() ;
@@ -27,8 +36,12 @@ Download: function(storageObj, address)
     element.setAttribute('download', name);
     element.style.display = 'none';
     document.body.appendChild(element);
+
     element.click();
+
     document.body.removeChild(element);
+
+
 },
 
 
@@ -133,11 +146,13 @@ var param = {
 });
 
 */
-
-
-  }
-
-
+},
+checkBalance: function(event) {
+  event.preventDefault();
+  var address = document.getElementById('balanceAddress').value
+  if(!address) {console.log('No address found'); return;}
+console.log(web3.eth.getBalance(address))
+}
 };
 
 $(function() {
