@@ -3,13 +3,9 @@ link = {
 
   init: function() {
     link.web3Provider = new Web3.providers.HttpProvider(
-      "http://localhost:8545"
-    );
-    link.web3Provider = new Web3.providers.HttpProvider(
       "https://rinkeby.infura.io/yGEHQFbey55ozzDha3hf"
     );
     //link.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/dXG7QYJRJPW16SDWx2EM');
-
     web3 = new Web3(link.web3Provider);
     return link.bindEvents();
   },
@@ -19,6 +15,7 @@ link = {
     $(document).on("click", "#impkey", link.importkeystore);
     $(document).on("click", "#imppriv", link.importprivatekey);
     $(document).on("click", "#balance", link.checkBalance);
+    $(document).on("click", "#sendeth", link.sendeth);
   },
 
   Download: function(storageObj, address) {
@@ -123,7 +120,7 @@ link = {
     if (!privatekey || !password) {
       return;
     }
-    var result = web3.eth.accounts.privateKeyToAccount(privatekey);
+    var result = web3.eth.accounts.privateKeyToAccount('0x' + privateKey);
 
     console.log(result.address);
     console.log(result.privateKey);
@@ -153,6 +150,28 @@ link = {
       return;
     }
     console.log(web3.eth.getBalance(address));
+  },
+
+  sendeth: function(event) {
+    event.preventDefault();
+    var sender = web3.eth.accounts.privateKeyToAccount('0x37c79248c87d1da9018998a9b84526174e8e3562353501345e4ffe71716fd082');
+    var recipent = document.getElementById("recipentAddress").value;
+    var recipentAmount = document.getElementById("recipentAmount").value;
+
+    const rawTransaction = {
+      "to": recipent,
+      "value": web3.utils.toHex(web3.utils.toWei(recipentAmount, "ether")),
+      "gasPrice": '0x09184e72a000',
+      "gasLimit": '0x9C40',
+      "chainId": 4
+    };
+
+    console.log(sender.address);
+    console.log(web3.eth.getBalance(sender.address));
+    web3.eth.accounts.signTransaction(rawTransaction, sender.privateKey)
+    .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction))
+    .then(receipt => console.log("Transaction receipt: ", receipt))
+    .catch(err => console.error(err));
   }
 };
 
