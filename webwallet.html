@@ -1,0 +1,30 @@
+<html>
+<body>
+  <!--
+  <script src="https://github.com/ethereumjs/browser-builds/raw/2fb69a714afe092b06645286f14b94f41e5c062c/dist/ethereumjs-tx.js"></script>
+  -->
+  <script src="https://cdn.rawgit.com/ethereumjs/browser-builds/2fb69a714afe092b06645286f14b94f41e5c062c/dist/ethereumjs-tx.js"></script>
+
+   <script type="text/javascript" src="web3/dist/web3.js"></script>
+  <script type="text/javascript" src="async/dist/async.js"></script>
+
+  <h1>Simple Wallet Example - Netobjex</h1>
+  <h2>New Wallet</h2>
+  <div>
+    <input type="text" id="userpass" placeholder="Password" size="80"></input>
+    <button id ="newWallet">Create New Wallet</button></div>
+
+  <h2>Restore Wallet</h2>
+  <h2>Restore using keystore</h2>
+  <div><input type="text" id="impuserpass" placeholder="Password" size="80"></input>
+  <input type="file" id="key"/> <button id ="impkey">upload</button></div>
+  <h2>Restore using privatekey</h2>
+  <div><input type="text" id="privuserpass" placeholder="Password" size="80"></input>
+    <div><input type="text" id="priv" placeholder="Privatekey" size="80"></input><button id ="imppriv">Create New Wallet</button></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="linkwallet.js"></script>
+
+</body>
+</html>
