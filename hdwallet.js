@@ -27,6 +27,3 @@ console.log("Pubkey as hex:",pubKey.toString('hex'));
 
 const addr = ethUtil.publicToAddress(pubKey).toString('hex');
 console.log("pubkey to Addr:",addr);
-
-const address = ethUtil.toChecksumAddress(addr)
-console.log("Address with Check sum:",address);
