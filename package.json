@@ -1,0 +1,19 @@
+{
+  "name": "eth-wallet",
+  "version": "1.0.0",
+  "description": "eth light wallet for demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanly-johnson/eth-wallet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stanly-johnson/eth-wallet/issues"
+  },
+  "homepage": "https://github.com/stanly-johnson/eth-wallet#readme"
+}
