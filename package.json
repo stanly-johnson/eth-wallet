@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/stanly-johnson/eth-wallet/issues"
   },
-  "homepage": "https://github.com/stanly-johnson/eth-wallet#readme"
+  "homepage": "https://github.com/stanly-johnson/eth-wallet#readme",
+  "dependencies": {
+    "ethereumjs-tx": "^1.3.7",
+    "express": "^4.16.4",
+    "web3": "^0.20.0"
+  }
 }
