@@ -38,14 +38,16 @@ const rawTransaction = {
   value: '0x00',
   gasPrice: 0x09184e72a000,
   gasLimit: 0x30000,
-  chainId: 3
+  chainId: 4
 }
 
 var transaction = new ethTx(rawTransaction);
 transaction.sign(addrNode._privateKey);
 const serializedTx = transaction.serialize()
 
-web3.eth.sendSignedTransaction(
+console.log('Serialized transaction:',serializedTx.toString('hex'));
+
+web3.eth.sendRawTransaction(
    `0x${serializedTx.toString('hex')}`,
    (error, result) => {
       if (error) { console.log(`Error: ${error}`); }
