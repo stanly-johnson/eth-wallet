@@ -7,8 +7,8 @@ const web3 = new Web3(
    new Web3.providers.HttpProvider("https://rinkeby.infura.io/yGEHQFbey55ozzDha3hf")
 );
 
-//const mnemonic = bip39.generateMnemonic(); //generates string
-const mnemonic = "hold warrior physical fun excuse resource capable scissors pyramid hip jungle minor";
+const mnemonic = bip39.generateMnemonic(); //generates string
+//const mnemonic = "hold warrior physical fun excuse resource capable scissors pyramid hip jungle minor";
 
 console.log("Mnemonic:",mnemonic);
 
