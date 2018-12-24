@@ -3,9 +3,9 @@ link = {
 
   init: function() {
     link.web3Provider = new Web3.providers.HttpProvider(
-      "https://rinkeby.infura.io/yGEHQFbey55ozzDha3hf"
+      ""
     );
-    //link.web3Provider = new Web3.providers.HttpProvider('https://ropsten.infura.io/dXG7QYJRJPW16SDWx2EM');
+    //link.web3Provider = new Web3.providers.HttpProvider('');
     web3 = new Web3(link.web3Provider);
     return link.bindEvents();
   },
@@ -176,37 +176,6 @@ link = {
       .then(signedTx => web3.eth.sendSignedTransaction(signedTx.rawTransaction))
       .then(receipt => console.log("Transaction receipt: ", receipt))
       .catch(err => console.error(err));
-  },
-
-  createHDWallet: function(event) {
-    event.preventDefault();
-
-    const mnemonic = bip39.generateMnemonic(); //generates string
-    console.log("Mnemonic:", mnemonic);
-
-    const seed = bip39.mnemonicToSeed(mnemonic); //creates seed buffer
-
-    const root = hdkey.fromMasterSeed(seed);
-
-    const masterPrivateKey = root.privateKey.toString("hex");
-    console.log("Master private Key:", masterPrivateKey);
-
-    const masterPubKey = root.publicKey.toString("hex");
-    console.log("Master Public Key: ", masterPubKey);
-
-    var path = "m/44'/60'/0'/0/0";
-
-    const addrNode = root.derive(path);
-    console.log("path: ", path);
-
-    const pubKey = ethUtil.privateToPublic(addrNode._privateKey);
-    console.log("Pubkey as hex:", pubKey.toString("hex"));
-
-    const addr = ethUtil.publicToAddress(pubKey).toString("hex");
-    console.log("pubkey to Addr:", addr);
-
-    const address = ethUtil.toChecksumAddress(addr);
-    console.log("Address with Check sum:", address);
   }
 };
 
